@@ -33,7 +33,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'www.etms.site'
+    'www.etms.mp'
 ]
 
 # Application definition
@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'class.apps.ClassConfig',
     'attendance.apps.AttendanceConfig',
     'classroom.apps.ClassroomConfig',
-    'index.apps.IndexConfig',
     'lesson.apps.LessonConfig',
     'report.apps.ReportConfig',
     'users.apps.UsersConfig',
@@ -71,7 +70,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
     "127.0.0.1:8000",
     "localhost:8000",
-    "www.etms.site:8000"
+    "www.etms.mp:8000"
 )
 
 CORS_ALLOW_CREDENTIALS = True
