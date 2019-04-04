@@ -9,11 +9,6 @@ from .serializers import DepartmentSerializer, ProfessionSerializer, ClassSerial
 from rest_framework.response import Response
 
 
-def index(request):
-    """主页"""
-    return render(request, "html/index.html")
-
-
 class DepartmentSelectView(GenericAPIView, ListModelMixin):
     """
     获取系信息视图

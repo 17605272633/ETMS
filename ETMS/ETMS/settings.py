@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
+    'index.apps.IndexConfig',
     'class.apps.ClassConfig',
     'attendance.apps.AttendanceConfig',
     'classroom.apps.ClassroomConfig',
