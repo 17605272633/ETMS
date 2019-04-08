@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'index.apps.IndexConfig',
-    'class.apps.ClassConfig',
+    'classes.apps.ClassConfig',
     'attendance.apps.AttendanceConfig',
     'classroom.apps.ClassroomConfig',
     'lesson.apps.LessonConfig',

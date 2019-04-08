@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('pid', models.IntegerField(primary_key=True, serialize=False, verbose_name='专业号')),
                 ('pname', models.CharField(max_length=20, verbose_name='专业名')),
-                ('pdepart', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='class.department_table', verbose_name='所在系')),
+                ('pdepart', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='classes.department_table', verbose_name='所在系')),
             ],
             options={
                 'db_table': 't_profession',
@@ -49,6 +49,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='class_table',
             name='cprofession',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='class.profession_table', verbose_name='所在专业'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='classes.profession_table', verbose_name='所在专业'),
         ),
     ]
