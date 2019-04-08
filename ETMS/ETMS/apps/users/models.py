@@ -1,7 +1,9 @@
 from django.db import models
 
+from classes.models import class_table
+from lesson.models import lesson_table
 
-# Create your models here.
+
 class teacher_table(models.Model):
     """教师表"""
     tid = models.IntegerField(primary_key=True, verbose_name="教师工号")
@@ -14,3 +16,19 @@ class teacher_table(models.Model):
     def __str__(self):
         """定义每个数据对象的显示信息"""
         return self.tname
+
+
+class student_table(models.Model):
+    """学生表"""
+    sid = models.IntegerField(primary_key=True, verbose_name="学号")
+    sname = models.CharField(max_length=20, verbose_name="学生名")
+    sclass = models.ForeignKey(class_table, on_delete=models.CASCADE, verbose_name="所在班级")
+    lesson = models.ManyToManyField(lesson_table)
+
+    class Meta:
+        db_table = "t_student"
+        verbose_name = "学生表"
+
+    def __str__(self):
+        """定义每个数据对象的显示信息"""
+        return self.sname
