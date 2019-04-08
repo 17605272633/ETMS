@@ -1,8 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from classes.models import class_table
-from users.models import teacher_table
 
+from users.models import teacher_table
 
 
 class lesson_table(models.Model):

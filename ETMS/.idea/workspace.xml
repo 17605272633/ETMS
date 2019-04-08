@@ -2,22 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dd41830-8b2b-4951-8b10-1d3e6e8b0933" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ETMS/apps/lesson/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ETMS/apps/users/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ETMS/apps/lesson/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ETMS/apps/lesson/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/class/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/classes/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/class/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/classes/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/class/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/classes/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/class/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/classes/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/class/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/classes/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/class/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/classes/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/class/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/classes/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/class/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/classes/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/class/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/classes/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/class/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/classes/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ETMS/apps/lesson/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/lesson/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ETMS/apps/lesson/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/lesson/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ETMS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,7 +67,7 @@
         <counts>
           <entry key="html" value="6" />
           <entry key="log" value="5" />
-          <entry key="py" value="66" />
+          <entry key="py" value="78" />
           <entry key="sql" value="2" />
           <entry key="t_class" value="1" />
           <entry key="t_department" value="2" />
@@ -92,7 +81,7 @@
           <entry key="Database Element" value="6" />
           <entry key="HTML" value="6" />
           <entry key="PLAIN_TEXT" value="5" />
-          <entry key="Python" value="66" />
+          <entry key="Python" value="78" />
           <entry key="Scratch" value="2" />
         </counts>
       </usages-collector>
@@ -100,15 +89,15 @@
         <counts>
           <entry key="dummy" value="14" />
           <entry key="html" value="30" />
-          <entry key="py" value="2549" />
-          <entry key="txt" value="50" />
+          <entry key="py" value="2760" />
+          <entry key="txt" value="66" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="30" />
-          <entry key="PLAIN_TEXT" value="64" />
-          <entry key="Python" value="2549" />
+          <entry key="PLAIN_TEXT" value="80" />
+          <entry key="Python" value="2760" />
         </counts>
       </usages-collector>
     </session>
@@ -116,22 +105,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ETMS/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="e#628#660#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-90">
-              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+            <state relative-caret-position="150">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -139,11 +116,53 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ETMS/apps/users/models.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="-227">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1554366857062" expanded="true" signature="414:418" ph="..." />
+                <marker date="1554366857062" expanded="true" signature="414:633" ph="..." />
+                <marker date="1554366857062" expanded="true" signature="1268:1269" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-322">
+              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+                <marker date="1554272381461" expanded="true" signature="119:136" ph="..." />
+                <marker date="1554272381461" expanded="true" signature="119:272" ph="..." />
+                <marker date="1554272381461" expanded="true" signature="788:1119" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="1" column="19" lean-forward="true" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,23 +176,38 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ETMS/settings.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+            <state relative-caret-position="103">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
-                <element signature="e#305#314#0" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/models.py">
+        <entry file="file://$PROJECT_DIR$/ETMS/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="28" selection-start-column="28" selection-end-column="28" />
+            <state relative-caret-position="480">
+              <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+              <folding>
+                <element signature="e#628#660#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="592">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -211,10 +245,13 @@
         <option value="$PROJECT_DIR$/ETMS/settings.py" />
         <option value="$PROJECT_DIR$/ETMS/apps/classes/apps.py" />
         <option value="$PROJECT_DIR$/ETMS/apps/classes/models.py" />
-        <option value="$PROJECT_DIR$/ETMS/urls.py" />
         <option value="$PROJECT_DIR$/ETMS/apps/classes/migrations/0001_initial.py" />
-        <option value="$PROJECT_DIR$/ETMS/apps/lesson/models.py" />
         <option value="$PROJECT_DIR$/ETMS/apps/users/models.py" />
+        <option value="$PROJECT_DIR$/ETMS/apps/lesson/urls.py" />
+        <option value="$PROJECT_DIR$/ETMS/apps/lesson/models.py" />
+        <option value="$PROJECT_DIR$/ETMS/apps/lesson/serializers.py" />
+        <option value="$PROJECT_DIR$/ETMS/apps/lesson/views.py" />
+        <option value="$PROJECT_DIR$/ETMS/urls.py" />
       </list>
     </option>
   </component>
@@ -282,23 +319,7 @@
               <item name="ETMS" type="462c0819:PsiDirectoryNode" />
               <item name="ETMS" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ETMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ETMS" type="462c0819:PsiDirectoryNode" />
-              <item name="ETMS" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
               <item name="lesson" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ETMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ETMS" type="462c0819:PsiDirectoryNode" />
-              <item name="ETMS" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="lesson" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ETMS" type="b2602c69:ProjectViewProjectNode" />
@@ -411,18 +432,26 @@
       <option name="project" value="LOCAL" />
       <updated>1554367325179</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="创建教师,课程表,修改部分表">
+      <created>1554695974766</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1554695974766</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1853" height="901" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09729132" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11442786" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26233765" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26233765" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -431,7 +460,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32987013" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.34675324" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.25584415" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.559633" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.22207792" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.32987013" />
@@ -439,7 +468,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.18850194" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.13764511" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,10 +491,10 @@
     <MESSAGE value="一些配置,系,专业,班级表建立和视图完善" />
     <MESSAGE value="添加主页面视图" />
     <MESSAGE value="添加主页面视图-真" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加主页面视图-真" />
+    <MESSAGE value="创建教师,课程表,修改部分表" />
+    <option name="LAST_COMMIT_MESSAGE" value="创建教师,课程表,修改部分表" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.virtualenvs/ETMS/lib/python3.5/site-packages/django/conf/__init__.py" />
     <entry file="file://$USER_HOME$/.virtualenvs/ETMS/lib/python3.5/site-packages/django/core/management/commands/runserver.py" />
     <entry file="file://$USER_HOME$/.virtualenvs/ETMS/lib/python3.5/site-packages/django/core/management/__init__.py" />
     <entry file="file://$USER_HOME$/.virtualenvs/ETMS/lib/python3.5/site-packages/django/core/management/base.py" />
@@ -596,32 +625,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-            <marker date="1554272381461" expanded="true" signature="119:136" ph="..." />
-            <marker date="1554272381461" expanded="true" signature="119:272" ph="..." />
-            <marker date="1554272381461" expanded="true" signature="788:1119" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1554366857062" expanded="true" signature="414:418" ph="..." />
-            <marker date="1554366857062" expanded="true" signature="414:633" ph="..." />
-            <marker date="1554366857062" expanded="true" signature="1268:1269" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ETMS/apps/index/apps.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -642,20 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" selection-start-column="32" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -663,30 +652,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ETMS/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
-          <folding>
-            <element signature="e#305#314#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/etms/lib/python3.5/site-packages/django/urls/conf.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ETMS/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#628#660#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -713,20 +682,117 @@
     <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/migrations/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/ETMS/apps/users/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETMS/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+          <folding>
+            <element signature="e#305#314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETMS/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+          <folding>
+            <element signature="e#628#660#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/etms/lib/python3.5/site-packages/rest_framework/fields.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="935" selection-start-line="935" selection-end-line="935" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="1" column="19" lean-forward="true" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+        <state relative-caret-position="150">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ETMS/apps/users/models.py">
+    <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="-322">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+            <marker date="1554272381461" expanded="true" signature="119:136" ph="..." />
+            <marker date="1554272381461" expanded="true" signature="119:272" ph="..." />
+            <marker date="1554272381461" expanded="true" signature="788:1119" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETMS/apps/classes/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-227">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1554366857062" expanded="true" signature="414:418" ph="..." />
+            <marker date="1554366857062" expanded="true" signature="414:633" ph="..." />
+            <marker date="1554366857062" expanded="true" signature="1268:1269" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
