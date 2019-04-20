@@ -20,7 +20,7 @@ class teacher_table(models.Model):
 
 class student_table(models.Model):
     """学生表"""
-    sid = models.IntegerField(primary_key=True, verbose_name="学号")
+    sid = models.BigIntegerField(primary_key=True, verbose_name="学号")
     sname = models.CharField(max_length=20, verbose_name="学生名")
     sclass = models.ForeignKey(class_table, on_delete=models.CASCADE, verbose_name="所在班级")
     lesson = models.ManyToManyField(lesson_table)

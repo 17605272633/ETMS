@@ -191,3 +191,6 @@ LOGGING = {
         },
     }
 }
+
+# 七牛云外域默认链接名
+QINIU_DOMIN_PREFIX = "http://ppqcwq9nm.bkt.clouddn.com/"
