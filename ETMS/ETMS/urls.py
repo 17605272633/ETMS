@@ -23,4 +23,5 @@ urlpatterns = [
     url(r"classes/", include("classes.urls")),
     url(r"lesson/", include("lesson.urls")),
     url(r"report/", include("report.urls")),
+    url(r"classroom/", include("classroom.urls")),
 ]
