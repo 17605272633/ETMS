@@ -3,7 +3,7 @@ from django.db import models
 
 class department_table(models.Model):
     """系表"""
-    did = models.IntegerField(primary_key=True, verbose_name="系号")
+    # did = models.IntegerField(auto_now_add=True, verbose_name="系号")
     dname = models.CharField(max_length=20, verbose_name="系名")
 
     class Meta:
@@ -34,6 +34,7 @@ class class_table(models.Model):
     cid = models.IntegerField(primary_key=True, verbose_name="班号")
     cname = models.CharField(max_length=20, verbose_name="班名")
     cprofession = models.ForeignKey(profession_table, on_delete=models.CASCADE, verbose_name="所在专业")
+    ccount = models.IntegerField(verbose_name="人数")
 
     class Meta:
         db_table = "t_class"
@@ -42,7 +43,3 @@ class class_table(models.Model):
     def __str__(self):
         """定义每个数据对象的显示信息"""
         return self.cname
-
-
-
-

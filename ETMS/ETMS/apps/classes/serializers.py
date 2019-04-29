@@ -35,3 +35,31 @@ class ClassSerializer(serializers.ModelSerializer):
     class Meta:
         model = class_table
         fields = '__all__'
+
+
+class ClassShowSerializer(serializers.Serializer):
+    pid = serializers.IntegerField(label='专业id', read_only=True)
+    pname = serializers.CharField(label='专业名', max_length=20)
+    pclass = ClassSerializer(many=True)
+
+    """
+    [
+        {
+            "pid": 80901,
+            "pname":"计算机科学与技术",
+            "pclass":[
+                        {
+                            "cid":1530501,
+                            "cname":"2015计算机科学与技术一班",
+                            "ccount": 30
+                        },
+                        ......                                   
+                    ]
+        },
+        ......         
+    ]
+    """
+
+
+
+
