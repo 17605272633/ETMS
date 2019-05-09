@@ -1,9 +1,10 @@
 from rest_framework.generics import GenericAPIView
-from rest_framework.mixins import ListModelMixin
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from lesson.serializers import LessonSerializer
+from users.models import student_table
+from users.serializers import StudentSerializer
 from .models import lesson_table
 
 
@@ -13,6 +14,7 @@ class LessonSelectView(GenericAPIView):
     路由：/lesson/lesson/
 
     """
+
     def get(self, request):
         """查询所有"""
         try:
@@ -48,10 +50,10 @@ class LessonSelectView(GenericAPIView):
 
         lclass_id = querydict.getlist("lclass_id")[0]
 
-        select_lesson = lesson_table.objects.filter(lclass_id=lclass_id)
-        serializer = LessonSerializer(select_lesson, many=True)
+        create_lesson = lesson_table.objects.filter(lclass_id=lclass_id)
+        create_serializer = LessonSerializer(create_lesson, many=True)
 
-        return Response(serializer.data)
+        return Response(create_serializer.data)
 
 
 class LessonApplyView(APIView):
@@ -63,6 +65,7 @@ class LessonApplyView(APIView):
 
 
     """
+
     def post(self, request):
         """创建实验课程"""
         # 获取请求参数
@@ -96,4 +99,42 @@ class LessonApplyView(APIView):
         })
 
 
+class TeacherLessonView(APIView):
+    """教师课表查询"""
 
+    def post(self, request):
+        """
+        请求参数: lteacher_id = ?
+        """
+
+        querydict = request.data
+
+        lteacher_id = querydict.getlist("lteacher_id")[0]
+
+        teacher_lesson = lesson_table.objects.filter(lteacher_id=lteacher_id)
+        teacher_serializer = LessonSerializer(teacher_lesson, many=True)
+
+        return Response(teacher_serializer.data)
+
+
+class StudentLessonView(APIView):
+    """学生课表查询"""
+
+    def post(self, request):
+        """
+        请求参数: lstudent_id = ?
+        """
+        querydict = request.data
+
+        lstudent_id = querydict.getlist("lstudent_id")[0]
+
+        student_queryset = student_table.objects.filter(sid=lstudent_id)
+        student_list = StudentSerializer(student_queryset, many=True).data
+
+        student_info = student_list[0]
+        lclass_id = student_info["sclass"]
+
+        student_lesson = lesson_table.objects.filter(lclass_id=lclass_id)
+        student_serializer = LessonSerializer(student_lesson, many=True)
+
+        return Response(student_serializer.data)
