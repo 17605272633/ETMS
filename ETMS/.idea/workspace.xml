@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2dd41830-8b2b-4951-8b10-1d3e6e8b0933" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ETMS/apps/lesson/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/lesson/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ETMS/apps/lesson/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ETMS/apps/lesson/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -96,15 +95,15 @@
         <counts>
           <entry key="dummy" value="14" />
           <entry key="html" value="134" />
-          <entry key="py" value="9276" />
-          <entry key="txt" value="138" />
+          <entry key="py" value="9525" />
+          <entry key="txt" value="147" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="134" />
-          <entry key="PLAIN_TEXT" value="152" />
-          <entry key="Python" value="9276" />
+          <entry key="PLAIN_TEXT" value="161" />
+          <entry key="Python" value="9525" />
         </counts>
       </usages-collector>
     </session>
@@ -114,8 +113,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="105" column="11" lean-forward="true" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
+            <state relative-caret-position="540">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -548,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557414554478</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="教师,学生课表查询">
+      <created>1557415905827</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1557415905828</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -569,7 +575,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4991708" visible="true" weight="0.33246753" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4991708" weight="0.33246753" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -616,7 +622,8 @@
     <MESSAGE value="班级管理后台完成" />
     <MESSAGE value="部分数据表结构修改" />
     <MESSAGE value="课程安排后端实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="课程安排后端实现" />
+    <MESSAGE value="教师,学生课表查询" />
+    <option name="LAST_COMMIT_MESSAGE" value="教师,学生课表查询" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../../../meiduomall/ManyBeautifulMall/ManyBeautiful/ManyBeautifulMall/templates/index.html">
@@ -916,8 +923,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ETMS/apps/lesson/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="105" column="11" lean-forward="true" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
+        <state relative-caret-position="540">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
