@@ -1,4 +1,6 @@
 from django.db import models
+
+from lesson.models import lesson_table
 from users.models import student_table, teacher_table
 
 
@@ -13,7 +15,8 @@ class student_attendance_table(models.Model):
         (5, "请假"),
     )
 
-    asid = models.IntegerField(primary_key=True, verbose_name="考勤id")
+    # asid = models.IntegerField(primary_key=True, verbose_name="考勤id")
+    alesson = models.ForeignKey(lesson_table, on_delete=models.CASCADE, verbose_name="课程")
     astime = models.DateTimeField(auto_now_add=True, verbose_name="日期")
     asuser = models.ForeignKey(student_table, on_delete=models.CASCADE, verbose_name="学生")
     asstatus = models.SmallIntegerField(choices=STATUS_CHOICES, default=1, verbose_name="考勤信息")
@@ -38,7 +41,8 @@ class teacher_attendance_table(models.Model):
         (5, "请假"),
     )
 
-    atid = models.IntegerField(primary_key=True, verbose_name="考勤id")
+    # atid = models.IntegerField(primary_key=True, verbose_name="考勤id")
+    alesson = models.ForeignKey(lesson_table, on_delete=models.CASCADE, verbose_name="课程")
     attime = models.DateTimeField(auto_now_add=True, verbose_name="日期")
     atuser = models.ForeignKey(teacher_table, on_delete=models.CASCADE, verbose_name="教师")
     atstatus = models.SmallIntegerField(choices=STATUS_CHOICES, default=1, verbose_name="考勤信息")
