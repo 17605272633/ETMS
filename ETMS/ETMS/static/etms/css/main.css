@@ -183,12 +183,24 @@ body{
 	border:1px solid #dddddd ;
 	text-align: center;
 }
-.report_con .deepblue{
+.deepblue{
 	background: #53a0ce;
 	color: white;
 	font-family: "微软雅黑";
 	height: 40px;
 }
+
+.white{
+	background: white;
+	color: #707171;
+	font-family: "微软雅黑";
+	height: 40px;
+}
+
+.patch_txt{
+    width: 220px;
+}
+
 
 .report_con .white{
 	background: white;
@@ -370,16 +382,22 @@ body{
 }
 
 .sign_in_list li .first{
-    background: #f33;
+    background: #ff722b;
     color:#fff;
 }
 
 .sign_in_list li .second{
-    background:#ff722b;
+    background: #f33;
     color:#fff;
 }
 
 .sign_in_list li .third{
+    background:#b94a48;
+
+    color:#fff;
+}
+
+.sign_in_list li .four{
     background:#fa3;
     color:#fff;
 }
@@ -428,6 +446,47 @@ body{
 .login_form_con,.register_form_con,.sign_in_form_con{
     display:none;
 }
+
+.sendreport_form_con{
+    display:none;
+}
+
+.sendreport_form{
+    width:350px;
+    height:400px;
+    position:fixed;
+    background:#fff;
+    border-radius:5px;
+    left:50%;
+    top:50%;
+    margin-left:-175px;
+    margin-top:-200px;
+    z-index:9999;
+}
+
+.send_report_title {
+    height: 72px;
+    border-bottom: 1px solid #dcdcdc;
+    position: relative;
+}
+
+.send_report_title h3{
+    line-height:72px;
+    text-align:center;
+    font-size:18px;
+    color:#1482f0;
+}
+.send_report_title a{
+    width:16px;
+    height:16px;
+    background:url(../images/shutoff.png) left top no-repeat;
+    font-weight:normal;
+    color:#999;
+    position:absolute;
+    right:20px;
+    top:30px;
+}
+
 
 
 .login_form,.register_form,.sign_in_form{

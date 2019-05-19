@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../static/etms/js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/etms/css/main.css">
+    <title></title>
+</head>
+<body style="background: #f9f9f9">
+
+<div>
+    <div style="height: 190px">
+        <div style="width: 400px;float:left; display:inline">
+            <form class="create_teacher_form_con" id="create_teacher_form_con" action="http://www.etms.mp:8000/user/teacher/"
+                  method="post" target="create_teacher_target">
+                 <div class="create_teacher_form">
+                     <h3>创建教师信息</h3>
+                     <label>工号:</label>
+                     <input type="text" id="user_id" name="user_id" class="input_txt"><br>
+                     <label>姓名:</label>
+                     <input type="text" id="user_name" name="user_name" placeholder="" class="input_txt"><br>
+
+                    <input onclick="teacher_create()" value="创建" class="teacher_cre" type="button">
+                </div>
+            </form>
+            <iframe name="create_teacher_target" style="display:none"></iframe>
+        </div>
+
+        <div style="width: 400px;float:right; display:inline">
+            <h3>删除教师信息</h3>
+            <label>工号:</label>
+            <input type="text" id="delete_id" name="delete_id" placeholder="" class="input_txt"><br>
+            <input onclick="teacher_delete()" value="删除" class="teacher_del" type="button">
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div>
+    <div>
+
+        <div style="width: 838px;height: 300px;overflow:auto;">
+            <h3>教师展示</h3>
+
+            <table cellspacing="0" style="margin: 20px auto 0 30px;">
+                <tr class="deepblue">
+                    <th style="width: 202px;">工号</th>
+                    <th style="width: 202px;">姓名</th>
+                </tr>
+            </table>
+            <table class="teacher_find_table" style="margin-left: 30px; overflow: auto">
+                <tr class="white">
+                    <th style="width: 200px;">工号</th>
+                    <th style="width: 200px;">姓名</th>
+                </tr>
+                <tr class="white">
+                    <th style="width: 200px;">工号</th>
+                    <th style="width: 200px;">姓名</th>
+                </tr>
+                <tr class="white">
+                    <th style="width: 200px;">工号</th>
+                    <th style="width: 200px;">姓名</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    function teacher_create(){
+        let user_id = $("#user_id").val();
+        let user_name = $("#user_name").val();
+        if (user_id === undefined && user_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (user_name === undefined && user_name === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/user/teacher/',
+            type: 'POST',
+            dataType: 'json',
+            data:{'user_id':user_id,'user_name':user_name},
+            success:function(dat){
+                alert("创建成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+    function teacher_delete() {
+        let user_id = $("#delete_id").val();
+        if (user_id === undefined && user_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/user/teacher/',
+            type: 'DELETE',
+            dataType: 'json',
+            data:{'user_id':user_id},
+            success:function(dat){
+                alert("删除成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+    window.onload = function (){
+        $.ajax({
+            url: '/user/teacher/',
+            type: 'GET',
+            dataType: 'json',
+            success:function(dat){
+                let TeacherInfo = document.getElementsByClassName('teacher_find_table')[0]
+                teacher_info = dat
+                console.log(teacher_info)
+                $(TeacherInfo).empty();
+                for (let j = 0; j < teacher_info.length; j++) {
+                    let tr = document.createElement('tr')
+                    tr.innerHTML = '<th style=\"width: 200px;padding: 0px\">'+teacher_info[j].tid+'</th>'+
+                        '<th style=\"width: 200px;padding: 0px\">'+teacher_info[j].tname+'</th>'
+                    tr.setAttribute("class", "white");
+                    TeacherInfo.appendChild(tr)
+                }
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+</script>
+</html>

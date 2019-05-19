@@ -32,3 +32,19 @@ class student_table(models.Model):
     def __str__(self):
         """定义每个数据对象的显示信息"""
         return self.sname
+
+
+class super_table(models.Model):
+    """超级管理员表"""
+
+    username = models.CharField(max_length=20, verbose_name="账号名")
+    password = models.CharField(max_length=20, verbose_name="密码")
+
+    class Meta:
+        db_table = "t_super"
+        verbose_name = "超级管理员表"
+
+    def __str__(self):
+        """定义每个数据对象的显示信息"""
+        return self.username
+

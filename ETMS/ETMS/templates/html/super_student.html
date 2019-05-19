@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../../static/etms/js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/etms/css/main.css">
+</head>
+<body style="background:#f9f9f9">
+<div>
+    <div style="height: 190px">
+        <div style="width: 400px;float:left; display:inline">
+            <form class="create_student_form_con" id="create_student_form_con" action="http://www.etms.mp:8000/user/student/"
+                  method="post" target="create_student_target">
+                 <div class="create_student_form">
+                     <h3>创建学生信息</h3>
+                     <label>学号:</label>
+                     <input type="text" id="user_id" name="user_id" class="input_txt"><br>
+                     <label>姓名:</label>
+                     <input type="text" id="user_name" name="user_name" placeholder="" class="input_txt"><br>
+                     <label>班号:</label>
+                     <input type="text" id="class_id" name="class_id" placeholder="" class="input_txt"><br>
+
+                    <input onclick="student_create()" value="创建" class="student_cre" type="button">
+                </div>
+            </form>
+            <iframe name="create_student_target" style="display:none"></iframe>
+        </div>
+
+        <div style="width: 400px;float:right; display:inline">
+            <h3>删除学生信息</h3>
+            <label>学生学号:</label>
+            <input type="text" id="delete_id" name="delete_id" placeholder="" class="input_txt"><br>
+            <input onclick="student_delete()" value="删除" class="student_del" type="button">
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div>
+    <div>
+
+        <div style="width: 838px;height: 300px;overflow:auto;">
+            <h3>学生展示</h3>
+
+            <label>班级:</label>
+            <input type="text" id="classes_id" name="classes_id" placeholder="" class="input_txt">
+            <input onclick="student_find()" value="查找" class="student_find" type="button">
+
+            <table cellspacing="0" style="margin: 20px auto 0 30px;">
+                <tr class="deepblue">
+                    <th style="width: 182px;">学号</th>
+                    <th style="width: 182px;">姓名</th>
+                    <th style="width: 182px;">班级</th>
+
+                </tr>
+            </table>
+            <table class="student_find_table" style="margin-left: 30px; overflow: auto">
+                <tr class="white">
+                    <th style="width: 180px;">学号</th>
+                    <th style="width: 180px;">姓名</th>
+                    <th style="width: 180px;">班级</th>
+                </tr>
+                <tr class="white">
+                    <th style="width: 180px;">学号</th>
+                    <th style="width: 180px;">姓名</th>
+                    <th style="width: 180px;">班级</th>
+                </tr>
+                <tr class="white">
+                    <th style="width: 180px;">学号</th>
+                    <th style="width: 180px;">姓名</th>
+                    <th style="width: 180px;">班级</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    function student_create(){
+        let user_id = $("#user_id").val();
+        let user_name = $("#user_name").val();
+        let class_id = $("#class_id").val();
+        if (user_id === undefined && user_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (user_name === undefined && user_name === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (class_id === undefined && class_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/user/student/',
+            type: 'POST',
+            dataType: 'json',
+            data:{'user_id':user_id,'user_name':user_name,'class_id':class_id},
+            success:function(dat){
+                alert("创建成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+    function student_delete() {
+        let user_id = $("#delete_id").val();
+        if (user_id === undefined && user_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/user/student/',
+            type: 'DELETE',
+            dataType: 'json',
+            data:{'user_id':user_id},
+            success:function(dat){
+                alert("删除成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+    function student_find(){
+        let classes_id = $("#classes_id").val();
+        if (classes_id === undefined && classes_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/user/studentfind/',
+            type: 'POST',
+            dataType: 'json',
+            data:{'classes_id':classes_id},
+            success:function(dat){
+                let StudentInfo = document.getElementsByClassName('student_find_table')[0]
+                student_info = dat
+                console.log(student_info)
+                $(StudentInfo).empty();
+                for (let j = 0; j < student_info.length; j++) {
+                    let tr = document.createElement('tr')
+                    tr.innerHTML = '<th style=\"width: 180px;padding: 0px\">'+student_info[j].sid+'</th>'+
+                        '<th style=\"width: 180px;padding: 0px\">'+student_info[j].sname+'</th>' +
+                        '<th style=\"width: 180px;padding: 0px\">'+student_info[j].sclass+'</th>'
+                    tr.setAttribute("class", "white");
+                    StudentInfo.appendChild(tr)
+                }
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+</script>
+
+</html>

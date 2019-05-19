@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'haystack',
 
     'index.apps.IndexConfig',
     'classes.apps.ClassConfig',
@@ -193,4 +194,17 @@ LOGGING = {
 }
 
 # 七牛云外域默认链接名
-QINIU_DOMIN_PREFIX = "http://ppqcwq9nm.bkt.clouddn.com/"
+QINIU_DOMIN_PREFIX = "http://prp24tg72.bkt.clouddn.com/"
+
+# 搜索模块
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    }
+}
+
+# 添加此项，当数据库改变时，会自动更新索引，非常方便
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+

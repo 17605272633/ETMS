@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../static/etms/js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/etms/css/main.css">
+    <title></title>
+</head>
+<body style="background: white">
+<div>
+    <div style="height: 190px">
+        <div style="width: 400px;float:left; display:inline">
+            <form class="search_attendance_form_con" id="form_attendance_search" action="http://www.etms.mp:8000/attendance/user_attendance/"
+                  method="post" target="search_attendance_target">
+                 <div class="search_attendance_form">
+                     <h3>考勤信息查询</h3>
+                    <label>学号/工号:</label>
+                    <input type="text" id="user_id" name="user_id" class="input_txt"><br>
+                    <label>身份 输入:</label>
+                    <input type="text" id="userkind" name="userkind" placeholder="1/2" class="input_txt"><br>
+                    <label>1 教师查询 / 2 学生查询</label><br>
+
+                    <input onclick="attendance_search()" value="查询" class="attendance_sea" type="button">
+                </div>
+            </form>
+        </div>
+
+        <div style="width: 400px;float:right; display:inline">
+            <h3>考勤信息修改</h3>
+            <label>考勤信息ID:</label>
+            <input type="text" id="patch_id" name="patch_id" placeholder="" class="patch_txt"><br>
+            <label>身份输入:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" id="patch_userkind" name="patch_userkind" placeholder="1 教师查询 /2 学生查询" class="patch_txt"><br>
+            <label>修改的状态:</label>
+            <input type="text" id="patch_status" name="patch_status" placeholder="1 全勤/2 迟到/3 早退/4 缺勤/5请假 " class="patch_txt"><br>
+            <input onclick="attendance_patch()" value="修改" class="attendance_pat" type="button">
+        </div>
+    </div>
+
+    <iframe name="search_attendance_target" style="display:none"></iframe>
+
+    <div style="width: 838px;height: 300px;overflow:auto;">
+        <h3>考勤信息展示</h3>
+        <table cellspacing="0" style="margin: 20px auto 0 30px;">
+            <tr class="deepblue">
+                <th style="width: 100px;">ID</th>
+                <th style="width: 150px;">姓名</th>
+                <th style="width: 180px;">时间</th>
+                <th style="width: 150px;">课程</th>
+                <th style="width: 150px;">考勤状态</th>
+            </tr>
+        </table>
+        <table class="find_attendance_table" style="margin-left: 30px; overflow: auto">
+            <tr class="white">
+                <th style="width: 98px;">ID</th>
+                <th style="width: 148px;">姓名</th>
+                <th style="width: 178px;">时间</th>
+                <th style="width: 148px;">课程</th>
+                <th style="width: 148px;">考勤状态</th>
+            </tr>
+            <tr class="white">
+                <th style="width: 98px;">ID</th>
+                <th style="width: 148px;">姓名</th>
+                <th style="width: 178px;">时间</th>
+                <th style="width: 148px;">课程</th>
+                <th style="width: 148px;">考勤状态</th>
+            </tr>
+            <tr class="white">
+                <th style="width: 98px;">ID</th>
+                <th style="width: 148px;">姓名</th>
+                <th style="width: 178px;">时间</th>
+                <th style="width: 148px;">课程</th>
+                <th style="width: 148px;">考勤状态</th>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+</body>
+
+<script>
+
+    function attendance_search() {
+        let user_id = $("#user_id").val();
+        let userkind = $("#userkind").val();
+        if (user_id === undefined && user_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (userkind === undefined && userkind === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/attendance/user_attendance/',
+            type: 'POST',
+            dataType: 'json',
+            data:{'user_id':user_id,'userkind':userkind},
+            success:function(dat){
+                let Attendance = document.getElementsByClassName('find_attendance_table')[0]
+                attend_info = dat
+                $(Attendance).empty();
+                for (let j = 0; j < attend_info.length; j++) {
+                    let tr = document.createElement('tr')
+                    console.log(attend_info)
+                    tr.innerHTML = '<th style=\"width: 98px;padding: 0px\">'+attend_info[j].id+'</th>'+
+                        '<th style=\"width: 178px;padding: 0px\">'+attend_info[j].name+'</th>' +
+                        '<th style=\"width: 178px;padding: 0px\">'+attend_info[j].time+'</th>' +
+                        '<th style=\"width: 148px;padding: 0px\">'+attend_info[j].lesson_name+'</th>' +
+                        '<th style=\"width: 148px;padding: 0px\">'+attend_info[j].status+'</th>'
+                    tr.setAttribute("class", "white");
+                    Attendance.appendChild(tr)
+                }
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+
+    }
+
+    function attendance_patch(){
+        let id = $("#patch_id").val();
+        let userkind = $("#patch_userkind").val();
+        let status = $("#patch_status").val();
+        if (id === undefined && id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (userkind === undefined && userkind === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (status === undefined && status === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/attendance/up_attendance/',
+            type: 'POST',
+            dataType: 'json',
+            data:{'id':id,'userkind':userkind,'status':status},
+            success:function(dat){
+                alert("修改成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+
+</script>
+</html>

@@ -9,6 +9,11 @@ $(function(){
 	$('.sign_in_button').click(function(){
 	    $('.sign_in_form_con').show();
 	})
+
+    // 打开实验报告提交框
+	$('.upload_a').click(function(){
+	    $('.sendreport_form_con').show();
+	})
 	
 	// 签到成功返回主界面
 	$('.sign_in_to_index').click(function(){

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>{% block title %}用户后台管理{% endblock %}</title>
+
+	<link rel="stylesheet" type="text/css" href="../../../static/admin/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../../../static/admin/css/main.css">
+	<script type="text/javascript" src="../../../static/admin/js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+	<div class="header">
+		<a href="#" class="logo fl"><img src="../../../static/admin/images/logo.png" alt="logo"></a>
+		<a href="#" class="logout fr">退 出</a>
+	</div>
+
+	<div class="side_bar">
+		<div class="user_info">
+
+			<p>欢迎你 <em>管理员</em></p>
+		</div>
+
+		<div class="menu_con">
+			<div class="first_menu active"><a href="#" class="icon01">用户管理</a></div>
+			<ul class="sub_menu show">
+				<li><a class="icon022" href="../../../static/admin/html/user_count.html" target="main_frame">教师管理</a></li>
+				<li class="current"><a href="../../../static/admin/html/user_list.html" class="icon021" target="main_frame">学生管理</a></li>
+			</ul>
+
+
+
+		</div>
+	</div>
+
+    {% block content %}
+	<div class="main_body" id="main_body">
+        <form class="navbar-form navbar-left" action="{% url 'haystack_search' %}" method="get">
+            <div class="form-group">
+                <input type="text" class="form-control" name="q" placeholder="请输入搜索的内容" value=""/>
+            </div>
+            <input type="submit" value="搜索">
+        </form>
+
+	</div>
+    {% endblock %}
+
+
+</body>
+</html>

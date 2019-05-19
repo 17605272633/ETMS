@@ -7,10 +7,10 @@ access_key = 'th7EitB3qmG6v073ZoxtTeCjQWnN6yBO0Mp6vdOQ'
 secret_key = 'cZRrYgHb4ABUtyd71dgisZ0pf2SDy15QhlCUJrTA'
 
 # 要上传的空间
-bucket_name = 'etms'
+bucket_name = 'etmss'
 
 # 外域默认链接名
-# QINIU_DOMIN_PREFIX = "http://ppqcwq9nm.bkt.clouddn.com/"
+# QINIU_DOMIN_PREFIX = "http://prp24tg72.bkt.clouddn.com/"
 
 
 def storage(data):

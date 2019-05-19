@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>用户后台管理</title>
+
+	<link rel="stylesheet" type="text/css" href="../../static/admin/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../../static/admin/css/main.css">
+	<script type="text/javascript" src="../../static/admin/js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+	<div class="header">
+		<a href="#" class="logo fl"><img src="../../static/admin/images/logo.png" alt="logo"></a>
+		<a href="http://www.etms.mp:8000/user/user/logout/" class="logout fr">退 出</a>
+	</div>
+	
+	<div class="side_bar">
+		<div class="user_info">
+			<img src="../../static/admin/images/q_person.jpg" alt="">
+			<p>欢迎你 <em>管理员</em></p>
+		</div>
+
+		<div class="menu_con">
+			<div class="first_menu active"><a href="#" class="icon01">用户管理</a></div>
+			<ul class="sub_menu show">
+				<li><a class="icon022" href="#">学生管理</a></li>
+				<li class="current"><a class="icon021" href="#">教师管理</a></li>
+			</ul>
+		</div>
+	</div>
+
+    <div class="main_body" id="main_body" style="background: url(../../static/admin/images/pingjie.png)no-repeat 0 0;">
+
+	</div>
+
+{#    {% block content %}#}
+{#	<div class="main_body" id="main_body">#}
+{#        <form class="navbar-form navbar-left" action="{% url 'haystack_search' %}" method="get">#}
+{#            <div class="form-group">#}
+{#                <input type="text" class="form-control" name="q" placeholder="请输入搜索的内容" value=""/>#}
+{#            </div>#}
+{#            <input type="submit" value="搜索">#}
+{#        </form>#}
+{##}
+{#	</div>#}
+{#    {% endblock %}#}
+
+
+</body>
+
+<script>
+    {#学生管理#}
+    $(document).ready(function(){
+        $(".icon022").click(function(){
+            $(".main_body").html("").html("<iframe src=\"http://www.etms.mp:8000/super_student\" style=\"height: 800px; width: 900px; background: white; border: white 0;\"></iframe>");
+      })
+    })
+
+    {#教师管理#}
+    $(document).ready(function(){
+        $(".icon021").click(function(){
+            $(".main_body").html("").html("<iframe src=\"http://www.etms.mp:8000/super_teacher\" style=\"height: 800px; width: 900px; background: white; border: white 0;\"></iframe>");
+      })
+    })
+</script>
+
+
+
+</html>

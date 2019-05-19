@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ETMS</title>
+	<link rel="stylesheet" type="text/css" href="../../static/admin/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../../static/admin/css/main.css">
+	<script type="text/javascript" src="../../static/admin/js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+	<div class="header">
+		<a href="#" class="logo fl"><img src="../../static/admin/images/logo.png" alt="logo"></a>
+		<a href="http://www.etms.mp:8000/user/user/logout/" class="logout fr">退 出</a>
+	</div>
+
+	<div class="side_bar">
+		<div class="user_info">
+			<img src="../../static/admin/images/q_person.jpg" alt="">
+			<p>欢迎你 <em>教师</em></p>
+		</div>
+
+		<div class="menu_con">
+			<div class="first_menu active"><a href="#" class="icon01" onclick="user_manage()">用户管理</a></div>
+			<ul class="sub_menu show">
+				<li><a class="icon022" href="#" onclick="student_manage()">学生管理</a></li>
+				<li class="current"><a class="icon021" href="#" onclick="teacher_manage()">教师管理</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="main_body" id="main_body" style="background:url(../../static/admin/images/pingjie2.png)no-repeat 0 0;">
+
+	</div>
+</body>
+<script>
+    function user_manage(){
+        alert("无权限使用")
+    }
+    function student_manage(){
+        alert("无权限使用")
+    }
+    function teacher_manage(){
+        alert("无权限使用")
+    }
+</script>
+</html>

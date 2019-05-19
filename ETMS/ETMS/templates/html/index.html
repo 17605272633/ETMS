@@ -3,154 +3,136 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>实验教学管理系统</title>
-		<link rel="stylesheet" type="text/css" href="../../static/news/css/reset.css">
-		<link rel="stylesheet" type="text/css" href="../../static/news/css/main.css">
-		<script type="text/javascript" src="../../static/news/js/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="../../static/news/js/main.js"></script>
-		<script type="text/javascript" src="../../static/news/js/index.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../static/etms/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../../static/etms/css/main.css">
+		<script type="text/javascript" src="../../static/etms/js/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="../../static/etms/js/main.js"></script>
+		<script type="text/javascript" src="../../static/etms/js/index.js"></script>
 	</head>
 	<body>
+
 		<div class="header_con">
 			<div class="header">
-				<a href="#" class="logo fl"><img src="../../static/news/images/Snipaste_2019-03-21_15-02-41.png" alt="logo"></a>
+
+				<a href="#" class="logo fl"><img src="../../static/etms/images/Snipaste_2019-03-21_15-02-41.png" alt="logo"></a>
 				<ul class="menu fl">
 					<li class="active" data-cid="0"><a href="javascript:;">实验报告</a></li>
-					<li data-cid="1"><a href="javascript:;">课程安排</a></li>
-					<li data-cid="2"><a href="javascript:;">实验室</a></li>
-					<li data-cid="3"><a href="javascript:;">班级</a></li>
-					<li data-cid="4"><a href="javascript:;">用户</a></li>
-					<li data-cid="5"><a href="javascript:;">考勤信息</a></li>
+                    <li data-cid="1" class="lesson"><a href="javascript:;" target="view_window">课程安排</a></li>
+					<li data-cid="2" class="classroom"><a href="javascript:;" target="view_window">实验室</a></li>
+					<li data-cid="3" class="classes"><a href="javascript:;" target="view_window">系/专业/班</a></li>
+					<li data-cid="4" class="attendance"><a href="javascript:;" target="view_window">考勤信息</a></li>
 				</ul>
 				<div class="user_btns fr">
-					<a href="javascript:;" class="login_btn">登录</a> / <a href="javascript:;" class="register_btn">注册</a>
+                    <a href="http://www.etms.mp:8000/user/user"><button>用户管理</button></a>
 				</div>
 				<!-- 用户登录后显示下面，隐藏上面 -->
-				<div class="user_login fr">
-					<img src="../../static/news/images/person01.png" class="lgin_pic">
+				<!-- <div class="user_login fr">
+					<img src="../../static/etms/images/person01.png" class="lgin_pic">
 					<a href="#">用户张三</a>
 					<a href="#">退出</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
 		<div class="conter_con">
 
 			<div class="report_div">
+
 				<div class="report_title">
 					<h3>报告管理</h3>
 				</div>
 				
 				<div class="select_report">
-					<label>院系</label>
-					<select>
-						<option>北京</option>
-						<option>上海</option>
-						<option>深圳</option>
-					</select>
 					<label>专业</label>
-					<select>
-						<option>北京</option>
-						<option>上海</option>
-						<option>深圳</option>
+					<select class="zhuanYe">
+
 					</select><br />
 					<label>班级</label>
-					<select>
-						<option>北京</option>
-						<option>上海</option>
-						<option>深圳</option>
+					<select class="banJi">
+
 					</select>
 					<label>课程</label>
-					<select>
-						<option>北京</option>
-						<option>上海</option>
-						<option>深圳</option>
+					<select class="keCheng">
+
 					</select>
 				</div>
 
 				<div style="width: 838px;height: 300px;overflow:auto;margin-top: 20px;">
-					
-					<table cellspacing="0" class="report_con fl">
 
-						<tr class="deepblue">
+                    <table cellspacing="0" style="margin: 20px auto 0;margin-left: 30px;">
+                        <tr class="deepblue">
 							<th style="width: 80px;">姓名</th>
-                            <th style="width: 130px;">学号</th>
+                            <th style="width: 132px;">学号</th>
 							<th style="width: 300px;">报告名</th>
-							<th style="width: 120px;">上传时间</th>
+							<th style="width: 182px;">上传时间</th>
 							<th style="width: 80px;">下载报告</th>
-
 						</tr>
-						<tr class="white">
-							<td class="left">大头</td>
-							<td>201530050177</td>
-							<td>论我的头为什么这么大</td>
-							<td>2077-07-07</td>
-							<td><a href="">下载</a></td>
-						</tr>
+					</table>
+					<table cellspacing="0" class="report_con fl">
                         <tr class="white">
-							<td class="left">大头</td>
-							<td>201530050177</td>
-							<td>论我的头为什么这么大</td>
-							<td>2077-07-07</td>
-							<td><a href="">下载</a></td>
-						</tr>
+                            <th style="width: 80px;padding: 0px">大头</th>
+                            <th style="width: 130px;padding: 0px">0101001</th>
+                            <th style="width: 300px;padding: 0px">为什么我的头这么大</th>
+                            <th style="width: 182px;padding: 0px">我也不知道时间</th>
+                            <th style="width: 80px;padding: 0px"><a href="">下载</a></th>
+                        </tr>
                         <tr class="white">
-							<td class="left">大头</td>
-							<td>201530050177</td>
-							<td>论我的头为什么这么大</td>
-							<td>2077-07-07</td>
-							<td><a href="">下载</a></td>
-						</tr>
+                            <th style="width: 80px;padding: 0px">大头</th>
+                            <th style="width: 130px;padding: 0px">0101001</th>
+                            <th style="width: 300px;padding: 0px">为什么我的头这么大</th>
+                            <th style="width: 182px;padding: 0px">我也不知道时间</th>
+                            <th style="width: 80px;padding: 0px"><a href="">下载</a></th>
+                        </tr>
                         <tr class="white">
-							<td class="left">大头</td>
-							<td>201530050177</td>
-							<td>论我的头为什么这么大</td>
-							<td>2077-07-07</td>
-							<td><a href="">下载</a></td>
-						</tr>
+                            <th style="width: 80px;padding: 0px">大头</th>
+                            <th style="width: 130px;padding: 0px">0101001</th>
+                            <th style="width: 300px;padding: 0px">为什么我的头这么大</th>
+                            <th style="width: 182px;padding: 0px">我也不知道时间</th>
+                            <th style="width: 80px;padding: 0px"><a href="">下载</a></th>
+                        </tr>
                         <tr class="white">
-							<td class="left">大头</td>
-							<td>201530050177</td>
-							<td>论我的头为什么这么大</td>
-							<td>2077-07-07</td>
-							<td><a href="">下载</a></td>
-						</tr>
+                            <th style="width: 80px;padding: 0px">大头</th>
+                            <th style="width: 130px;padding: 0px">0101001</th>
+                            <th style="width: 300px;padding: 0px">为什么我的头这么大</th>
+                            <th style="width: 182px;padding: 0px">我也不知道时间</th>
+                            <th style="width: 80px;padding: 0px"><a href="">下载</a></th>
+                        </tr>
                         <tr class="white">
-							<td class="left">大头</td>
-							<td>201530050177</td>
-							<td>论我的头为什么这么大</td>
-							<td>2077-07-07</td>
-							<td><a href="">下载</a></td>
-						</tr>
-
+                            <th style="width: 80px;padding: 0px">大头</th>
+                            <th style="width: 130px;padding: 0px">0101001</th>
+                            <th style="width: 300px;padding: 0px">为什么我的头这么大</th>
+                            <th style="width: 182px;padding: 0px">我也不知道时间</th>
+                            <th style="width: 80px;padding: 0px"><a href="">下载</a></th>
+                        </tr>
 
 					</table>
 				</div>
 
 				<div class="report_button">
 					<a href="javascript:;" class="upload_a">
-						<input type="file" name="" id="">点击这里上传文件
+						<input type="button" class="send_report_button">点击这里上传文件
 					</a>
 				</div>
-
-
 
 			</div>
 
 			<div class="sign_in_con fr">
 				<div class="sign_in_title">
-					<h3>签到</h3>
+					<h3>考勤</h3>
 				</div>
 				<div align="center">
-					<input type="button" class="sign_in_button" value="点击签到" />
+					<input type="button" class="sign_in_button" value="点击考勤" />
 				</div>
-				<label style="margin-left: 10px;font-size: 20px;">最近签到</label>
+				<label style="margin-left: 10px;font-size: 20px;">温馨提示</label>
 				<ul class="sign_in_list">
-					<li><span class="first">1</span><a href="#">张老师</a></li>
-					<li><span class="second">2</span><a href="#">刘老师</a></li>
-					<li><span class="third">3</span><a href="#">马老师</a></li>
-					<li><span>4</span><a href="#">皮老师</a></li>
-					<li><span>5</span><a href="#">燕老师</a></li>
-					<li><span>6</span><a href="#">牛老师</a></li>
+                    <li><span></span><a href="#">社会主义核心价值观基本内容</a></li>
+					<li><span class="first"></span><a href="#">富强, 民主, 文明, 和谐</a></li>
+					<li><span class="second"></span><a href="#">自由, 平等, 公正, 法制</a></li>
+					<li><span class="third"></span><a href="#">爱国, 敬业, 诚信, 友善</a></li>
+
+					<li><span></span><a href="#">我校校风</a></li>
+                    <li><span class="four"></span><a href="#">明德厚学　爱国荣校</a></li>
+
 				</ul>
 			</div>
 		</div>
@@ -166,90 +148,212 @@
 				<a href="">友情链接</a>
 			</div>
 			<p class="copyright">
-				CopyRight © 2018 东华理工大学长江学院 All Rights Reserved<br />
+				CopyRight © 2018 马派马派马派派 All Rights Reserved<br />
 				电话：12345678 京ICP备12345678号
 			</p>
 		</div>
 
-		<!-- 登录表单 -->
-		<form class="login_form_con">
-			<div class="login_form">
-				<div class="login_title">
-					<h3>登 录</h3>
-					<a href="javascript:;" class="shutoff"></a>
-				</div>
-				<div class="form_group">
-					<input id="mobile" type="text" name="mobile" autocomplete="off">
-					<div class="input_tip">手机号</div>
-					<div id="login-mobile-err" class="error_tip">手机号不能为空</div>
-				</div>
-				<div class="form_group">
-					<input id="password" type="password" name="password">
-					<div class="input_tip">密码(不少于6位)</div>
-					<div id="login-password-err" class="error_tip">密码不能为空</div>
-				</div>
-				<input type="submit" name="" value="登 录" class="input_sub">
-				<div class="down_link">还没有账号？<a href="javascript:;" class="to_register">立即注册</a></div>
-			</div>
-			<div class="mask"></div>
-		</form>
 
-		<!-- 注册表单 -->
-		<form class="register_form_con">
-			<div class="register_form">
-				<div class="register_title">
-					<h3>注 册</h3>
+        <!-- 实验报告提交表单 -->
+        <form class="sendreport_form_con" enctype="multipart/form-data" action="http://www.etms.mp:8000/report/reportadd/" method="post" target="repport_target">
+			<div class="sendreport_form">
+				<div class="send_report_title">
+					<h3>实验报告提交</h3>
 					<a href="javascript:;" class="shutoff"></a>
 				</div>
-				<div class="form_group">
-					<input type="text" name="mobile" autocomplete="off" id="register_mobile" class="phone_input">
-					<div class="input_tip">手机号</div>
-					<div id="register-mobile-err" class="error_tip">手机号不能为空</div>
-				</div>
-				<div class="form_group">
-					<input type="text" name="code_pwd" id="imagecode" class="code_pwd">
-					<div class="input_tip">图形验证码</div>
-					<img src="../../static/news/images/pic_code.png" class="get_pic_code" onclick="generateImageCode()">
-					<div id="register-image-code-err" class="error_tip">图形码不能为空</div>
-				</div>
-				<div class="form_group">
-					<input type="text" name="smscode" id="smscode" class="code_pwd">
-					<div class="input_tip">手机验证码</div>
-					<a href="javascript:;" class="get_code" onclick="sendSMSCode()">点击获取验证码</a>
-					<div id="register-sms-code-err" class="error_tip">验证码不能为空</div>
-				</div>
-				<div class="form_group">
-					<input type="password" name="password" id="register_password" class="pass_input">
-					<div class="input_tip">密码(不少于6位)</div>
-					<div id="register-password-err" class="error_tip">密码不能为空</div>
-				</div>
-				<div class="form_group2 clearfix">
-					<input type="checkbox" class="agree_input" checked>
-					<p>同意使用条款，并已阅读"跟帖评论自律管理承诺书"</p>
-					<div class="error_tip">请勾选</div>
-				</div>
-				<input type="submit" name="" value="注 册" class="input_sub">
-				<div class="down_link">已有账号？<a href="javascript:;" class="to_login">立即登录</a></div>
+                <div>
+                    <input type="text" name="rname" placeholder="实验报告名" class="input_txt"><br>
+                    <input type="text" name="rclass" placeholder="班号" class="input_txt"><br>
+                    <input type="text" name="rstudent" placeholder="学号" class="input_txt"><br>
+                    <input type="text" name="rlesson" placeholder="课程号" class="input_txt"><br>
+                    <input type="file" name="rfiles" placeholder=""><br>
+                    <div class="error_tip">错误提示</div>
+                    <input type="submit" value="提交" class="input_sub">
+
+                </div>
+
 			</div>
 			<div class="mask"></div>
 		</form>
+        <iframe name="repport_target" style="display:none"></iframe>
 
 		<!-- 签到表单 -->
-		<form class="sign_in_form_con">
+		<form class="sign_in_form_con" action="http://www.etms.mp:8000/attendance/attendance/" method="post" target="sign_in_target">
 			<div class="sign_in_form">
 				<div class="sign_in_form_title">
 					<h3>签 到</h3>
 					<a href="javascript:;" class="shutoff"></a>
 				</div>
-				<div align="center">
-					<p class="sign_in_success">签 到 成 功</p>
-				</div>
+                <div>
+                    <input type="text" name="user_id" placeholder="学号/工号" class="input_txt"><br>
+                    <input type="password" name="lesson_id" placeholder="课程号" class="input_txt"><br>
+                    <label>1 教师</label>
+                    <label>2 学生</label>
+                    <input type="text" name="userkind" placeholder="用户属性" class="input_txt">
+                    <div class="error_tip">错误提示</div>
+                    <input type="submit" value="签到" class="input_sub">
+
+                </div>
+
 				<div align="right" style="margin-top: 80px;margin-right: 18px;">
 					<a href="javascript:;" class="sign_in_to_index">返回主界面</a>
 				</div>
 			</div>
 			<div class="mask"></div>
 		</form>
+        <iframe name="sign_in_target" style="display:none"></iframe>
 
 	</body>
 </html>
+
+<script>
+
+    {#课程安排#}
+    $(document).ready(function(){
+        $(".lesson").click(function(){
+            $(".report_div").html("").html("<iframe src=\"http://www.etms.mp:8000/lesson\" style=\"height: 800px; width: 900px; background: white; border: white 0;\"></iframe>");
+      })
+    })
+
+    {#实验室#}
+    $(document).ready(function(){
+        $(".classroom").click(function(){
+            $(".report_div").html("").html("<iframe src=\"http://www.etms.mp:8000/classroom\" style=\"height: 800px; width: 900px; background: white; border: white 0;\"></iframe>");
+      })
+    })
+
+    {#班级#}
+    $(document).ready(function(){
+        $(".classes").click(function(){
+            $(".report_div").html("").html("<iframe src=\"http://www.etms.mp:8000/classes\" style=\"height: 800px; width: 900px; background: white; border: white 0;\"></iframe>");
+      })
+    })
+
+    {#考勤信息#}
+    $(document).ready(function(){
+        $(".attendance").click(function(){
+            $(".report_div").html("").html("<iframe src=\"http://www.etms.mp:8000/attendance\" style=\"height: 800px; width: 900px; background: white; border: white 0;\"></iframe>");
+      })
+    })
+
+
+
+    $("iframe[name=repport_target]").on("load", function() {
+　      var responseText = $("iframe")[0].contentDocument.body.getElementsByTagName("pre")[0].innerHTML;
+    　　alert("实验报告已上传");
+    　　//以下就可以判断并处理返回值
+
+    })
+
+    window.onload = function () {
+        $.ajax({
+            url: '/classes/profess/',
+            type: 'GET',
+            dataType: 'json',
+            success:function(dat){
+                zhuanye = dat
+                let zhuanYe = document.getElementsByClassName('zhuanYe')[0]
+                for(let j = 0; j < zhuanye.length; j++) {
+                    let option = document.createElement('option')
+                    option.innerHTML = zhuanye[j].pname
+                    zhuanYe.appendChild(option)
+
+                    $(zhuanYe).change(function(){
+                        if($(this).children('option:selected').val()===zhuanye[j].pname){
+                            $.ajax({
+                            url: '/classes/class/',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {'cprofession': zhuanye[j].pid},
+                            success: function (dat) {
+                                banji = dat
+                                let banJi = document.getElementsByClassName('banJi')[0]
+                                $(banJi).empty();
+                                for (let j = 0; j < banji.length; j++) {
+                                    let option = document.createElement('option')
+                                    option.innerHTML = banji[j].cname
+                                    banJi.appendChild(option)
+
+                                    $(banJi).change(function(){
+                                        if($(this).children('option:selected').val()===banji[j].cname){
+                                            console.log("ok")
+                                            $.ajax({
+                                            url: '/lesson/lessonall/',
+                                            type: 'POST',
+                                            dataType: 'json',
+                                            data: {'lclass_id': banji[j].cid},
+                                            success: function (dat) {
+                                                kecheng = dat
+
+                                                let keCheng = document.getElementsByClassName('keCheng')[0]
+                                                $(keCheng).empty();
+                                                for (let j = 0; j < kecheng.length; j++) {
+                                                    let option = document.createElement('option')
+                                                    option.innerHTML = kecheng[j].lname
+                                                    keCheng.appendChild(option)
+
+                                                    $(keCheng).change(function(){
+
+                                                        if($(this).children('option:selected').val()===kecheng[j].lname){
+
+                                                            console.log(kecheng[j].lname)
+
+                                                            $.ajax({
+                                                            url: '/report/report/',
+                                                            type: 'POST',
+                                                            dataType: 'json',
+                                                            data: {'lesson_id': kecheng[j].lid},
+                                                            success: function (dat) {
+                                                                let baoGao = document.getElementsByClassName('report_con fl')[0]
+                                                                baogao = dat
+                                                                $(baoGao).empty();
+                                                                for (let j = 0; j < baogao.length; j++) {
+                                                                    let tr = document.createElement('tr')
+                                                                    tr.innerHTML = '<th style=\"width: 80px;padding: 0px\">'+baogao[j].student_name+'</th>'+
+                                                                        '<th style=\"width: 130px;padding: 0px\">'+baogao[j].student_id+'</th>' +
+                                                                        '<th style=\"width: 300px;padding: 0px\">'+baogao[j].report_name+'</th>' +
+                                                                        '<th style=\"width: 120px;padding: 0px\">'+baogao[j].upload_time+'</th>' +
+                                                                        '<th style=\"width: 80px;padding: 0px\"><a href="'+baogao[j].download_url+'">下载</a></th>'
+
+
+                                                                    tr.setAttribute("class", "white");
+                                                                    baoGao.appendChild(tr)
+                                                                }
+
+
+
+
+                                                            },
+                                                            error: function () {
+                                                                alert('服务器超时，请重试！4');
+                                                            }
+                                                        });
+                                                        }
+                                                    });
+                                                }
+                                            },
+                                            error: function () {
+                                                alert('服务器超时，请重试！3');
+                                            }
+                                        });
+                                        }
+                                    });
+                                }
+                            },
+                            error: function () {
+                                alert('服务器超时，请重试！2');
+                            }
+                        });
+                        }
+                    });
+                };
+            },
+            error:function(){
+                alert('服务器超时，请重试！1');
+            }
+        });
+    }
+
+
+
+</script>

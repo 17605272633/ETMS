@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../static/etms/js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/etms/css/main.css">
+    <title></title>
+</head>
+<body style="background: white">
+<div>
+    <div style="height: 180px">
+        <div style="width: 400px;float:left; display:inline">
+            <h3>系别创建</h3>
+            <label>系名:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" id="depart_create" name="depart_create" placeholder="" class="depart_create_text"><br>
+            <input onclick="department_create()" value="创建" class="depart_cre" type="button">
+        </div>
+
+        <div style="width: 400px;float:right; display:inline">
+            <h3>系别删除</h3>
+            <label>系名:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" id="depart_delete" name="depart_delete" placeholder="" class="depart_delete_text"><br>
+            <input onclick="department_delete()" value="删除" class="depart_del" type="button">
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div>
+    <div style="height: 180px">
+        <div style="width: 400px;float:left; display:inline">
+            <h3>专业创建</h3>
+            <label>专业名:</label>
+            <input type="text" id="profess_name_create" name="profess_name_create" placeholder="" class="profess_create_text"><br>
+            <label>专业号:</label>
+            <input type="text" id="profess_id_create" name="profess_id_create" placeholder="" class="profess_create_text"><br>
+            <label>所在系:</label>
+            <input type="text" id="profess_depart_create" name="profess_depart_create" placeholder="" class="profess_create_text"><br>
+            <input onclick="profession_create()" value="创建" class="profess_cre" type="button">
+        </div>
+
+        <div style="width: 400px;float:right; display:inline">
+            <h3>专业删除</h3>
+            <label>专业号:</label>
+            <input type="text" id="profess_delete" name="profess_delete" placeholder="" class="profess_delete_text"><br>
+            <input onclick="profession_delete()" value="删除" class="profess_del" type="button">
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div>
+    <div style="height: 180px">
+        <div style="width: 400px;float:left; display:inline">
+            <h3>班级创建</h3>
+            <label>班级名:</label>
+            <input type="text" id="class_name_create" name="class_name_create" placeholder="" class="class_create_text"><br>
+            <label>班级号:</label>
+            <input type="text" id="class_id_create" name="class_id_create" placeholder="" class="class_create_text"><br>
+            <label>属专业:</label>
+            <input type="text" id="class_profess_create" name="class_profess_create" placeholder="" class="class_create_text"><br>
+            <label>人数:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" id="class_count_create" name="class_count_create" placeholder="" class="class_create_text"><br>
+
+            <input onclick="classes_create()" value="创建" class="class_cre" type="button">
+        </div>
+
+        <div style="width: 400px;float:right; display:inline">
+            <h3>班级删除</h3>
+            <label>班级号:</label>
+            <input type="text" id="class_delete" name="class_delete" placeholder="" class="class_delete_text"><br>
+            <input onclick="classes_delete()" value="删除" class="class_del" type="button">
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    function department_create() {
+        let class_name = $("#depart_create").val();
+
+        if (class_name === undefined && class_name === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/classes/depart/',
+            type: 'POST',
+            dataType: 'json',
+            data:{'class_name':class_name},
+            success:function(dat){
+                alert("创建成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+    function department_delete() {
+        let class_name = $("#depart_delete").val();
+
+        if (class_name === undefined && class_name === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/classes/depart/',
+            type: 'DELETE',
+            dataType: 'json',
+            data:{'class_name':class_name},
+            success:function(dat){
+                alert("删除成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+    function profession_create() {
+        let profess_name = $("#profess_name_create").val();
+        let profess_id = $("#profess_id_create").val();
+        let profess_depart = $("#profess_depart_create").val();
+
+        if (profess_name === undefined && profess_name === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (profess_id === undefined && profess_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (profess_depart === undefined && profess_depart === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/classes/profess/',
+            type: 'POST',
+            dataType: 'json',
+            data:{'pid':profess_id, "pname":profess_name, "pdepart_name": profess_depart},
+            success:function(dat){
+                alert("创建成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+    function profession_delete() {
+        let profess_id = $("#profess_delete").val();
+
+        if (profess_id === undefined && profess_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/classes/profess/',
+            type: 'DELETE',
+            dataType: 'json',
+            data:{'pid':profess_id},
+            success:function(dat){
+                alert("删除成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+
+    function classes_create() {
+        let class_name = $("#class_name_create").val();
+        let class_id = $("#class_id_create").val();
+        let profess_name = $("#class_profess_create").val();
+        let class_count = $("#class_count_create").val();
+
+        if (class_name === undefined && class_name === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (class_id === undefined && class_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (profess_name === undefined && profess_name === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (class_count === undefined && class_count === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/classes/classcreatedelete/',
+            type: 'POST',
+            dataType: 'json',
+            data:{'class_id':class_id, "class_name":class_name, "profess_name": profess_name, "class_count":class_count},
+            success:function(dat){
+                alert("创建成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+
+    }
+
+    function classes_delete() {
+        let class_id = $("#class_delete").val();
+
+        if (class_id === undefined && class_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/classes/classcreatedelete/',
+            type: 'DELETE',
+            dataType: 'json',
+            data:{'class_id':class_id},
+            success:function(dat){
+                alert("删除成功");
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+    }
+</script>
+
+</html>

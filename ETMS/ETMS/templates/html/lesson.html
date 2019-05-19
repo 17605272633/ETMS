@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../static/etms/js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/etms/css/main.css">
+    <title></title>
+</head>
+<body style="background: white">
+<div>
+    <form class="lesson_add_form_con" id="form_lesson_create" action="http://www.etms.mp:8000/lesson/lessonadd/" method="post"
+          target="lesson_add_target">
+        <div class="lesson_add_form">
+            <div class="lesson_add_title">
+                <h3>课程安排</h3>
+                <a href="javascript:;" class="shutoff"></a>
+            </div>
+            <div>
+                <input type="text" id="lid" name="lid" placeholder="课程号" class="input_txt"><br>
+                <input type="text" id="lname" name="lname" placeholder="课程名" class="input_txt"><br>
+                <input type="text" id="ltime" name="ltime" placeholder="课时" class="input_txt"><br>
+                <input type="text" id="lclass_id" name="lclass_id" placeholder="课程班号" class="input_txt"><br>
+                <input type="text" id="lclassroom_id" name="lclassroom_id" placeholder="课程教室" class="input_txt"><br>
+                <input type="text" id="lteacher_id" name="lteacher_id" placeholder="课程老师" class="input_txt"><br>
+
+                <input onclick="lesson_create()" value="提交" class="lesson_sub" type="button">
+            </div>
+        </div>
+    </form>
+    <iframe name="lesson_add_target" style="display:none"></iframe>
+
+</div>
+<HR>
+
+<div>
+
+    <form class="search_lesson_form_con" id="form_lesson_search" action="http://www.etms.mp:8000/lesson/lesson/" method="post"
+          target="search_lesson_target">
+         <div class="search_lesson_form">
+            <label>学号/工号:</label>
+            <input type="text" id="user_id" name="user_id" class="input_txt"><br>
+            <label>身份 输入:</label>
+            <input type="text" id="userkind" name="userkind" placeholder="1/2" class="input_txt"><br>
+            <label>1 教师查询 / 2 学生查询</label><br>
+
+            <input onclick="lesson_search()" value="查询" class="lesson_sea" type="button">
+        </div>
+    </form>
+    <iframe name="search_lesson_target" style="display:none"></iframe>
+
+    <div style="width: 838px;height: 300px;overflow:auto;">
+        <h3>课程信息展示</h3>
+        <table cellspacing="0" style="margin: 20px auto 0 30px;">
+            <tr class="deepblue">
+                <th style="width: 150px;">课程号</th>
+                <th style="width: 150px;">课程名</th>
+                <th style="width: 80px;">课时</th>
+                <th style="width: 120px;">课程班级</th>
+                <th style="width: 120px;">课程教室</th>
+                <th style="width: 120px;">课程老师</th>
+            </tr>
+        </table>
+        <table class="find_lesson_table" style="margin-left: 30px; overflow: auto">
+            <tr class="white">
+                <th style="width: 148px;">课程号</th>
+                <th style="width: 148px;">课程名</th>
+                <th style="width: 78px;">课时</th>
+                <th style="width: 118px;">课程班级</th>
+                <th style="width: 118px;">课程教室</th>
+                <th style="width: 118px;">课程老师</th>
+            </tr>
+            <tr class="white">
+                <th style="width: 148px;">课程号</th>
+                <th style="width: 148px;">课程名</th>
+                <th style="width: 78px;">课时</th>
+                <th style="width: 118px;">课程班级</th>
+                <th style="width: 118px;">课程教室</th>
+                <th style="width: 118px;">课程老师</th>
+            </tr>
+            <tr class="white">
+                <th style="width: 148px;">课程号</th>
+                <th style="width: 148px;">课程名</th>
+                <th style="width: 78px;">课时</th>
+                <th style="width: 118px;">课程班级</th>
+                <th style="width: 118px;">课程教室</th>
+                <th style="width: 118px;">课程老师</th>
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+
+
+</body>
+<script>
+    function lesson_create() {
+        let lid = $("#lid").val();
+        let lname = $("#lname").val();
+        let ltime = $("#ltime").val();
+        let lclassroom_id = $("#lclassroom_id").val();
+        let lclass_id = $("#lclass_id").val();
+        let lteacher_id = $("#lteacher_id").val();
+        if (lid === undefined && lid === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (lname === undefined && lname === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (ltime === undefined && ltime === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (lclassroom_id === undefined && lclassroom_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (lclass_id === undefined && lclass_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (lteacher_id === undefined && lteacher_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $("#form_lesson_create").submit();
+        alert("提交成功")
+    }
+
+
+    function lesson_search() {
+        let user_id = $("#user_id").val();
+        let userkind = $("#userkind").val();
+        if (user_id === undefined && user_id === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (userkind === undefined && userkind === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $.ajax({
+            url: '/lesson/lesson/',
+            type: 'POST',
+            dataType: 'json',
+            data:{'user_id':user_id,'userkind':userkind},
+            success:function(dat){
+                let kechengbiao = document.getElementsByClassName('find_lesson_table')[0]
+                kecheng = dat
+                $(kechengbiao).empty();
+                for (let j = 0; j < kecheng.length; j++) {
+                    let tr = document.createElement('tr')
+                    console.log(kecheng)
+                    tr.innerHTML = '<th style=\"width: 148px;padding: 0px\">'+kecheng[j].lid+'</th>'+
+                        '<th style=\"width: 148px;padding: 0px\">'+kecheng[j].lname+'</th>' +
+                        '<th style=\"width: 78px;padding: 0px\">'+kecheng[j].ltime+'</th>' +
+                        '<th style=\"width: 118px;padding: 0px\">'+kecheng[j].lclass+'</th>' +
+                        '<th style=\"width: 118px;padding: 0px\">'+kecheng[j].lclassroom+'</th>' +
+                        '<th style=\"width: 118px;padding: 0px\">'+kecheng[j].lteacher+'</th>'
+                    tr.setAttribute("class", "white");
+                    kechengbiao.appendChild(tr)
+                }
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+
+    }
+
+</script>
+</html>

@@ -1,0 +1,3 @@
+{{object.sid}}
+{{object.sname}}
+{{object.sclass_id}}

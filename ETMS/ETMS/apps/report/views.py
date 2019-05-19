@@ -13,7 +13,7 @@ from users.serializers import StudentSerializer
 class ReportShowView(GenericAPIView, ListModelMixin):
     """
     获取实验报告数据视图
-    路由：GET  /report/(?P<class_id>\d+)/report/
+    路由：POST  /report/report/
 
     参数: class_id	int	是	类别id（班级id）
 
@@ -24,7 +24,8 @@ class ReportShowView(GenericAPIView, ListModelMixin):
                 "rtime": "2019-04-11T21:56:27+08:00",
                 "rfiles": "333333333",
                 "rstudent": 201530050205,
-                "rclass": 1530502
+                "rlesson": 000000,
+                "rclass": 000000,
               },
               {
               }.
@@ -33,15 +34,14 @@ class ReportShowView(GenericAPIView, ListModelMixin):
 
     """
 
-    # 获取查询集的查询条件自拟
-    # queryset = report_table.objects.filter()
-    # serializer_class = ReportSerializer
+    def post(self, request):
+        # 获取请求参数
+        querydict = request.data
 
-    def get(self, request, *args, **kwargs):
+        # 获取报告名,所属学生,所在班级
+        lesson_id = querydict.getlist("lesson_id")[0]
 
-        class_id = self.kwargs['class_id']
-
-        select_profession = report_table.objects.filter(rclass_id=class_id)
+        select_profession = report_table.objects.filter(rlesson_id=lesson_id)
         serializer = ReportSerializer(select_profession, many=True)
 
         report_data = serializer.data
@@ -61,10 +61,8 @@ class ReportShowView(GenericAPIView, ListModelMixin):
 
             # 获取学生姓名
             student = student_table.objects.filter(sid=student_id)
-            print(student)
             student_data = StudentSerializer(student, many=True)
 
-            # print(student_data.data)
             student_name = student_data.data[0]["sname"]
 
             data = {
@@ -83,7 +81,7 @@ class ReportShowView(GenericAPIView, ListModelMixin):
 class ReportAddView(GenericAPIView, CreateModelMixin):
     """
     实验报告添加视图
-    路由：POST /report/report/
+    路由：POST /report/reportadd/
 
     请求参数: {
             rname
@@ -93,36 +91,49 @@ class ReportAddView(GenericAPIView, CreateModelMixin):
             }
 
     """
+    serializer_class = ReportSerializer
 
     def post(self, request, *args, **kwargs):
-
         # 获取请求参数
         querydict = request.data
 
         # 获取报告名,所属学生,所在班级
-        report_name = querydict.getlist("rname")[0]
-        report_class_id = querydict.getlist("rclass_id")[0]
-        report_student_id = querydict.getlist("rstudent_id")[0]
+        rname = querydict.getlist("rname")[0]
+        rclass = querydict.getlist("rclass")[0]
+        rstudent = querydict.getlist("rstudent")[0]
+        rlesson = querydict.getlist("rlesson")[0]
 
         # 获取到上传的文件
-        report_files = querydict.getlist("rfiles")[0].read()
+        rfile_obj = request.FILES.get("rfiles")
+
+        f1 = open(rfile_obj.name, "wb")
+
+        for i in rfile_obj.chunks():
+            f1.write(i)
+
+        f1.close()
+
+        file_object = open(rfile_obj.name, 'rb')
+        file_context = file_object.read()  # file_context是一个string，读取完后，就失去了对test.txt的文件引用
+        #  file_context = open(file).read().splitlines()
+        # file_context是一个list，每行文本内容是list中的一个元素
 
         # 再将文件上传到七牛云并获取路径
-        report_files_url = storage(report_files)
+        report_files_url = storage(file_context)
+
+        file_object.close()
 
         encodeurl = (settings.QINIU_DOMIN_PREFIX + report_files_url).encode()
 
         # 将获取的数据上在数据库创建
         report_table.objects.create(
-            rname=report_name,
+            rname=rname,
             rfiles=settings.QINIU_DOMIN_PREFIX + report_files_url + "?attname=",
-            rclass_id=report_class_id,
-            rstudent_id=report_student_id,
+            rstudent_id=rstudent,
+            rlesson_id=rlesson,
+            rclass_id=rclass,
         )
 
         return Response({
-            "report_name": report_name,
-            "report_files": settings.QINIU_DOMIN_PREFIX + report_files_url + "?attname=",
-            "report_class_id": report_class_id,
-            "report_student_id": report_student_id,
+            "message": "ok"
         })

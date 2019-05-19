@@ -25,4 +25,8 @@ urlpatterns = [
     url(r"report/", include("report.urls")),
     url(r"classroom/", include("classroom.urls")),
     url(r"attendance/", include("attendance.urls")),
+    url(r"user/", include("users.urls")),
+
+    # 搜索路由
+    url(r'^search/', include('haystack.urls')),
 ]

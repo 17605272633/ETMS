@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
 from .models import *
@@ -10,92 +11,88 @@ from .serializers import DepartmentSerializer, ProfessionSerializer, ClassSerial
 from rest_framework.response import Response
 
 
-class DepartmentViewSet(ModelViewSet):
+class DepartmentView(APIView):
     """
-    获取全部系信息
-    GET  /classes/depart/
-
-    返回json: [
-                  {
-                    "did": 1,
-                    "dname": "人文与艺术系"
-                  },
-                ...
-            ]
-
-    获取单个系信息
-    GET  /classes/depart/<pk>/
-
-    创建一个系信息
-    POST  /classes/depart/
-
-    修改某一个系信息
-    PUT  /classes/depart/<pk>/
-
-    删除某个系信息
-    DELETE /classes/depart/<pk>/
-
+    系信息视图
     """
 
-    queryset = department_table.objects.all()
-    serializer_class = DepartmentSerializer
+    def post(self, request):
+        """
+        创建系
+        路由：POST classes/depart/
 
+        返回json: {"message": "ok"}
+        """
 
-# class DepartmentView(GenericAPIView, ListModelMixin):
-#     """
-#     系信息视图
-#     """
-#     # 获取查询集
-#     queryset = department_table.objects.all()
-#     # 获取序列化器
-#     serializer_class = DepartmentSerializer
-#
-#     def get(self, request):
-#         """
-#         获取系信息
-#         路由：GET classes/depart/
-#
-#         返回json: [
-#                   {
-#                     "did": 1,
-#                     "dname": "人文与艺术系"
-#                   },
-#                   ...
-#                 ]
-#         """
-#         return self.list(request)
+        # 获取请求参数
+        querydict = request.data
+        depart_name = querydict.getlist("class_name")[0]
+
+        department_table.objects.create(
+            dname=depart_name
+        )
+
+        return Response({"message": "ok"})
+
+    def delete(self, request):
+        """
+        创建系
+        路由：DELETE classes/depart/
+
+        返回json: {"message": "ok"}
+        """
+
+        # 获取请求参数
+        querydict = request.data
+        depart_name = querydict.getlist("class_name")[0]
+
+        department = department_table.objects.get(dname=depart_name)
+        department.delete()
+
+        return Response({"message": "ok"})
 
 
 class ProfessionView(GenericAPIView):
     """
     获取专业数据视图
-    路由：classes/profession/
-
-    请求参数: pdepart = ? , ?为department_table的did
-
-    返回jsom: [
-              {
-                "pid": 30101,
-                "pname": "法学",
-                "pdepart": 1
-              },
-              ...
-            ]
+    路由：http://www.etms.mp:8000/classes/profess/
 
     """
 
+    def get(self, request):
+        profess = profession_table.objects.filter()
+        profess_info = ProfessionSerializer(profess, many=True)
+
+        return Response(profess_info.data)
+
     def post(self, request):
+        """
+        创建专业
+
+        请求参数: pid = ? , pname = ? , pdepart_name = ?
+
+        """
         # 获取请求参数
         querydict = request.data
-        pdepart = querydict.getlist("pdepart")[0]
+        pid = querydict.getlist("pid")[0]
+        pname = querydict.getlist("pname")[0]
+        pdepart_name = querydict.getlist("pdepart_name")[0]
 
-        # 获取查询集
-        select_profession = profession_table.objects.filter(pdepart=pdepart)
-        # 将数据序列化
-        serializer = ProfessionSerializer(select_profession, many=True)
+        # 获取专业对应系id
+        # 按照班级id获取课程数据
+        depart_querydict = department_table.objects.filter(dname=pdepart_name)
+        depart_info = DepartmentSerializer(depart_querydict, many=True).data
+
+        pdepart_id = depart_info[0]["id"]
+
+        profession_table.objects.create(
+            pid=pid,
+            pname=pname,
+            pdepart_id=pdepart_id
+        )
 
         # 返回序列化的数据
-        return Response(serializer.data)
+        return Response({"message": "ok"})
 
     def delete(self, request):
         """删除"""
@@ -218,27 +215,6 @@ class ClassShowView(GenericAPIView):
         return Response(profession_list)
 
 
-# class DepartmentCreateView(GenericAPIView):
-#     """
-#     系创建视图
-#     路由：classes/departmentcrate/
-#
-#     请求参数: depart_name   系名
-#
-#     """
-#
-#     def post(self, request):
-#         querydict = request.data
-#         depart_name = querydict.getlist("depart_name")[0]
-#
-#         # 将获取的数据上在数据库创建
-#         department_table.objects.create(
-#             dname=depart_name
-#         )
-#
-#         return Response(depart_name)
-
-
 class ProfessionCreateView(GenericAPIView):
     """
     专业创建视图
@@ -269,35 +245,59 @@ class ProfessionCreateView(GenericAPIView):
         })
 
 
-class ClassCreateView(GenericAPIView):
-    """
-    班级创建视图
-    路由：classes/classcreate/
-
-    请求参数: class_id   班号
-             class_name   班名
-             ccount   人数
-             class_profession  班级对应专业
-
-    """
+class ClassCreateDeleteView(GenericAPIView):
+    """班级创建/删除视图"""
 
     def post(self, request):
+        """
+        班级创建视图
+        路由：POST classes/classcreatedelete/
+
+        请求参数: class_id   班号
+                 class_name   班名
+                 class_count   人数
+                 profess_name  班级对应专业
+
+        """
+
         querydict = request.data
         class_id = querydict.getlist("class_id")[0]
         class_name = querydict.getlist("class_name")[0]
-        class_profession = querydict.getlist("class_profession")[0]
+        class_count = querydict.getlist("class_count")[0]
+        profess_name = querydict.getlist("profess_name")[0]
+
+        # 根据专业名获取专业号
+        profess = profession_table.objects.filter(pname=profess_name)
+        profess_data = ProfessionSerializer(profess, many=True)
+
+        profess_id = profess_data.data[0]["pid"]
 
         # 将获取的数据上在数据库创建
         class_table.objects.create(
             cid=class_id,
             cname=class_name,
-            ccount=0,
-            cprofession_id=class_profession
+            ccount=class_count,
+            cprofession_id=profess_id
 
         )
-        return Response({
-            "cid": class_id,
-            "cname": class_name,
-            "ccount": 0,
-            "cprofession_id": class_profession
-        })
+        return Response({"message": "ok"})
+
+    def delete(self, request):
+        """
+        班级删除视图
+
+        路由: DELETE /classes/classcreatedelete/
+        """
+        querydict = request.data
+        class_id = querydict.getlist("class_id")[0]
+
+        try:
+            class_info = class_table.objects.get(cid=class_id)
+        except:
+            return Response({"error": "查询错误"})
+
+        # 删除
+        class_info.delete()
+
+        # 响应
+        return Response(status=204)

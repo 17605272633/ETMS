@@ -32,17 +32,16 @@ class LessonSelectView(GenericAPIView):
     def post(self, request):
         """
         按条件获取课程数据
-        请求参数: lclass_id = ? , ? class_table的cid
+        请求参数: user_id = ? , userkind = ?
 
         返回json: [
               {
                 "lid": 809010001,
                 "lname": "C语言程序设计01",
                 "ltime": 12,
-                "lstart": "2018-09-10T22:58:03+08:00",
-                "lend": "2018-12-10T22:58:20+08:00",
-                "lclass": 1530501,
-                "lteacher": 80901001
+                "lclass_id": 1530501,
+                "lclassroom_id": 101,
+                "lteacher_id": 80901001
               },
               ...
             ]
@@ -51,13 +50,35 @@ class LessonSelectView(GenericAPIView):
         # 获取请求数据
         querydict = request.data
 
-        lclass_id = querydict.getlist("lclass_id")[0]
+        userkind = querydict.getlist("userkind")[0]
+        user_id = querydict.getlist("user_id")[0]
 
-        # 按照班级id获取课程数据
-        condition_lesson = lesson_table.objects.filter(lclass_id=lclass_id)
-        condition_serializer = LessonSerializer(condition_lesson, many=True)
+        # 教师
+        if userkind == "1":
 
-        return Response(condition_serializer.data)
+            # 按照教师id获取课程数据
+            condition_lesson = lesson_table.objects.filter(lteacher_id=user_id)
+            condition_serializer = LessonSerializer(condition_lesson, many=True)
+
+            return Response(condition_serializer.data)
+
+        # 学生
+        if userkind == "2":
+
+            # 获取该学生班号
+            stu_querydict = student_table.objects.filter(sid=user_id)
+            stu_info = StudentSerializer(stu_querydict, many=True).data
+
+            print(stu_info)
+
+            class_id = stu_info[0]["sclass"]
+
+            # 按照班级id获取课程数据
+            condition_lesson = lesson_table.objects.filter(lclass_id=class_id)
+            condition_serializer = LessonSerializer(condition_lesson, many=True)
+
+            return Response(condition_serializer.data)
+
 
 
 class LessonApplyView(APIView):
@@ -94,65 +115,30 @@ class LessonApplyView(APIView):
         )
 
         return Response({
-            "lid": lid,
-            "lname": lname,
-            "ltime": ltime,
-            "lclass_id": lclass_id,
-            "lclassroom_id": lclassroom_id,
-            "lteacher_id": lteacher_id,
+            "message": "ok"
         })
 
 
-class TeacherLessonView(APIView):
-    """教师课表查询"""
+class AllLessonView(APIView):
+    """课表查询"""
 
     def post(self, request):
         """
-        请求参数: lteacher_id = ?
+        路由 POST /lesson/lessonall/
+        请求参数: lclass_id = ?
         """
 
         # 获取请求数据
         querydict = request.data
 
         # 获取请求数据中的 教师id
-        lteacher_id = querydict.getlist("lteacher_id")[0]
+        lclass_id = querydict.getlist("lclass_id")[0]
 
         # 在课程表中查询该教师的课数据,并序列化
-        teacher_lesson = lesson_table.objects.filter(lteacher_id=lteacher_id)
-        teacher_serializer = LessonSerializer(teacher_lesson, many=True)
+        class_lesson = lesson_table.objects.filter(lclass_id=lclass_id)
+        lesson_serializer = LessonSerializer(class_lesson, many=True)
 
         # 返回教师课表数据
-        return Response(teacher_serializer.data)
+        return Response(lesson_serializer.data)
 
 
-class StudentLessonView(APIView):
-    """学生课表查询"""
-
-    def post(self, request):
-        """
-        请求参数: lstudent_id = ?
-        """
-
-        # 获取请求数据
-        querydict = request.data
-
-        # 获取请求数据中的 学生id
-        lstudent_id = querydict.getlist("lstudent_id")[0]
-
-        # 在 学生表 中按 学生id 查询该学生数据,并序列化
-        student_queryset = student_table.objects.filter(sid=lstudent_id)
-        student_serializer = StudentSerializer(student_queryset, many=True)
-
-        # 获取序列化后的该学生数据
-        student_data = student_serializer.data
-
-        # 从数据中获取该学生所在 班级id
-        student_info = student_data[0]
-        lclass_id = student_info["sclass"]
-
-        # 在 课程表 中按照 班级id 查询,并序列化
-        student_lesson = lesson_table.objects.filter(lclass_id=lclass_id)
-        student_serializer = LessonSerializer(student_lesson, many=True)
-
-        # 返回学生课程表数据
-        return Response(student_serializer.data)

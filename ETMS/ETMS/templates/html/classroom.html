@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../static/etms/js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/etms/css/main.css">
+    <title></title>
+</head>
+<body style="background: white">
+<div>
+    <div style="height: 190px">
+        <div style="width: 400px;float:left; display:inline">
+            <form class="classroom_create_form_con" id="form_classroom_create" action="http://www.etms.mp:8000/classroom/classroom/" method="post"
+                  target="classroom_create_target">
+                <div class="classroom_create_form">
+                    <div class="classroom_create_title">
+                        <h3>实验室信息创建</h3>
+                        <a href="javascript:;" class="shutoff"></a>
+                    </div>
+                    <div>
+                        <label>实验室号:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input type="text" id="crid" name="crid" placeholder="" class="input_txt"><br>
+                        <label>实验室名:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input type="text" id="crname" name="crname" placeholder="" class="input_txt"><br>
+                        <label>实验室规格:</label>
+                        <input type="text" id="crsize" name="crsize" placeholder="0 小/ 1 中/ 2 大/3 超大" class="input_txt"><br>
+                        <label>设备数:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input type="text" id="crdevice" name="crdevice" placeholder="设备数" class="input_txt"><br>
+
+                        <input onclick="classroom_create()" value="创建" class="class_sub" type="button">
+                    </div>
+                </div>
+            </form>
+            <iframe name="classroom_create_target" style="display:none"></iframe>
+        </div>
+
+
+        <div style="width: 400px;float:right; display:inline">
+            <h3>实验室信息删除</h3>
+            <label>实验室号:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" id="crid_delete" name="crid_delete" placeholder="" class="classroom_delete_text"><br>
+            <input onclick="classroom_delete()" value="删除" class="class_del" type="button">
+        </div>
+    </div>
+
+    <hr>
+
+    <div>
+
+        <div style="width: 838px;height: 300px;overflow:auto;">
+            <h3>实验室信息展示</h3>
+            <table cellspacing="0" style="margin: 20px auto 0 30px;">
+                <tr class="deepblue">
+                    <th style="width: 150px;">实验室号</th>
+                    <th style="width: 150px;">实验室名</th>
+                    <th style="width: 150px;">实验室规格</th>
+                    <th style="width: 120px;">设备个数</th>
+
+                </tr>
+            </table>
+            <table class="find_classroom_table" style="margin-left: 30px; overflow: auto">
+                <tr class="white">
+                    <th style="width: 148px;">实验室号</th>
+                    <th style="width: 148px;">实验室名</th>
+                    <th style="width: 148px;">实验室规格</th>
+                    <th style="width: 118px;">设备个数</th>
+                </tr>
+                <tr class="white">
+                    <th style="width: 148px;">实验室号</th>
+                    <th style="width: 148px;">实验室名</th>
+                    <th style="width: 148px;">实验室规格</th>
+                    <th style="width: 118px;">设备个数</th>
+                </tr>
+                <tr class="white">
+                    <th style="width: 148px;">实验室号</th>
+                    <th style="width: 148px;">实验室名</th>
+                    <th style="width: 148px;">实验室规格</th>
+                    <th style="width: 118px;">设备个数</th>
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+<script>
+    function classroom_create() {
+        let crid = $("#crid").val();
+        let crname = $("#crname").val();
+        let crsize = $("#crsize").val();
+        let crdevice = $("#crdevice").val();
+
+        if (crid === undefined && crid === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (crname === undefined && crname === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (crsize === undefined && crsize === "") {
+            alert("数据不能为空");
+            return;
+        }
+        if (crdevice === undefined && crdevice === "") {
+            alert("数据不能为空");
+            return;
+        }
+        $("#form_classroom_create").submit();
+        alert("创建成功")
+    }
+
+    function classroom_delete(){
+        let crid_delete = $("#crid_delete").val();
+        if (crid_delete === undefined && crid_delete === "") {
+            alert("数据不能为空");
+            return;
+        }
+
+        $.ajax({
+            url: '/classroom/classroom/',
+            type: 'DELETE',
+            dataType: 'json',
+            data:{'crid':crid_delete},
+            success:function(dat){
+                alert("删除成功")
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+
+
+    }
+
+    window.onload = function () {
+        $.ajax({
+            url: '/classroom/classroom/',
+            type: 'GET',
+            dataType: 'json',
+            success:function(dat){
+                let classRoom = document.getElementsByClassName('find_classroom_table')[0]
+                classroom_info = dat
+                $(classRoom).empty();
+                for (let j = 0; j < classroom_info.length; j++) {
+                    let tr = document.createElement('tr')
+                    tr.innerHTML = '<th style=\"width: 148px;padding: 0px\">'+classroom_info[j].crid+'</th>'+
+                        '<th style=\"width: 148px;padding: 0px\">'+classroom_info[j].crname+'</th>' +
+                        '<th style=\"width: 148px;padding: 0px\">'+classroom_info[j].crsize+'</th>' +
+                        '<th style=\"width: 118px;padding: 0px\">'+classroom_info[j].crdevice+'</th>'
+                    tr.setAttribute("class", "white");
+                    classRoom.appendChild(tr)
+                }
+
+
+            },
+            error:function(){
+                alert('服务器超时，请重试！');
+            }
+        });
+
+    }
+</script>
+</html>

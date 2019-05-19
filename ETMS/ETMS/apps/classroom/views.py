@@ -39,10 +39,7 @@ class ClassRoomView(APIView):
         )
 
         return Response({
-            "crid": crid,
-            "crname": crname,
-            "crsize": crsize,
-            "crdevice": crdevice
+            "message": "ok"
         })
 
     def put(self, request, pk):
@@ -92,10 +89,16 @@ class ClassRoomView(APIView):
         classroom_dict = classroom_serilizer.data
         return Response(classroom_dict, status=201)
 
-    def delete(self, request, pk):
+    def delete(self, request):
         """删除"""
+
+        # 获取请求参数
+        classroom_info = request.data
+
+        crid = classroom_info.getlist("crid")[0]
+
         try:
-            classroom = classroom_table.objects.get(crid=pk)
+            classroom = classroom_table.objects.get(crid=crid)
         except:
             return Response({"error": "查询错误"})
 
@@ -103,4 +106,4 @@ class ClassRoomView(APIView):
         classroom.delete()
 
         # 响应
-        return Response(status=204)
+        return Response([{"message": "ok"}], status=204)
